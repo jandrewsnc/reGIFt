@@ -51,7 +51,7 @@ For developers who want to build reGIFt themselves.
 
 1. Clone the repo and set up your API key:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/reGIFt.git
+   git clone https://github.com/jandrewsnc/reGIFt.git
    cd reGIFt
    cp reGIFt/Config.swift.example reGIFt/Config.swift
    # Edit reGIFt/Config.swift and paste your Klipy API key

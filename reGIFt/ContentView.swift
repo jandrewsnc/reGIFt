@@ -194,8 +194,8 @@ struct PreviewPanelView: View {
                 if let gif = state.gif {
                     // Title above GIF — width matches the displayed image
                     if !gif.title.isEmpty {
-                        let gifHeight = geo.size.height - titleHeight
-                        let imageWidth = min(geo.size.width, gifHeight * gif.thumbAspectRatio)
+                        let gifHeight = max(1, geo.size.height - titleHeight)
+                        let imageWidth = max(1, min(geo.size.width, gifHeight * gif.thumbAspectRatio))
                         Text(gif.title)
                             .font(.system(size: 11, weight: .medium))
                             .foregroundColor(.white)
