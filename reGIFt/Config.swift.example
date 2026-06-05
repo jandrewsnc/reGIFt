@@ -1,0 +1,5 @@
+// Copy this file to Config.swift and fill in your Klipy API key.
+// Get a key at https://klipy.com/api-overview
+enum Config {
+    static let klipyAPIKey = "YOUR_KLIPY_API_KEY_HERE"
+}
