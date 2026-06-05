@@ -1,0 +1,28 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <mask id="ribbon-mask">
+    <rect width="24" height="24" fill="white"/>
+
+    <!-- Vertical ribbon through box only -->
+    <rect x="11" y="12" width="2" height="12" fill="black"/>
+
+    <!-- Horizontal ribbon through middle of box -->
+    <rect x="2" y="16" width="20" height="2" fill="black"/>
+  </mask>
+
+  <!-- Package: bottom half of icon -->
+  <path
+    d="M20 22H10L4 24V22H4C2.895 22 2 21.105 2 20V14C2 12.895 2.895 12 4 12H20C21.105 12 22 12.895 22 14V20C22 21.105 21.105 22 20 22Z"
+    fill="black"
+    mask="url(#ribbon-mask)"
+  />
+
+  <!-- Infinity bow: peaks pushed to y=1 to align with neighbouring icons -->
+  <path
+    d="M12 12
+       C10 2 4 1 5 10
+       C6.5 13.5 10 13 12 12
+       C14 13 17.5 13.5 19 10
+       C20 1 14 2 12 12Z"
+    fill="black"
+  />
+</svg>
