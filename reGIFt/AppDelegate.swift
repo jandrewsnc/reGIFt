@@ -135,15 +135,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
     // MARK: - Preview panel show / hide
 
     private func showPreviewPanel() {
-        guard let popoverWindow = popover.contentViewController?.view.window else { return }
+        guard let popoverWindow = popover.contentViewController?.view.window,
+              let contentView = popoverWindow.contentView else { return }
 
-        let popoverFrame = popoverWindow.frame
+        // Use the content view's actual screen rect — the window frame includes
+        // shadow padding which creates a visual gap if used directly.
+        let contentScreenRect = popoverWindow.convertToScreen(contentView.frame)
         let h = AppDelegate.previewHeight
-        // +1 so the panel's top edge overlaps the popover's bottom by 1 pt,
-        // sealing any gap that would otherwise show between the two windows.
-        let targetFrame = NSRect(x: popoverFrame.minX,
-                                 y: popoverFrame.minY - h + 1,
-                                 width: popoverFrame.width,
+
+        let targetFrame = NSRect(x: contentScreenRect.minX,
+                                 y: contentScreenRect.minY - h,
+                                 width: contentScreenRect.width,
                                  height: h)
 
         // Bump token so any in-flight dismiss completion becomes a no-op.
@@ -160,8 +162,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
         } else {
             let panel = buildPreviewPanel()
             self.previewPanel = panel
-            // Start at zero height sitting at the overlap point
-            let startFrame = NSRect(x: targetFrame.minX, y: popoverFrame.minY + 1,
+            let startFrame = NSRect(x: targetFrame.minX, y: contentScreenRect.minY,
                                     width: targetFrame.width, height: 0)
             panel.setFrame(startFrame, display: false)
             panel.orderFront(nil)
@@ -192,7 +193,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
         let token = animationToken + 1
         animationToken = token
 
-        let endFrame = NSRect(x: panel.frame.minX, y: popoverWindow.frame.minY,
+        let contentScreenRect = popoverWindow.convertToScreen(popoverWindow.contentView?.frame ?? popoverWindow.contentView!.bounds)
+        let endFrame = NSRect(x: panel.frame.minX, y: contentScreenRect.minY,
                               width: panel.frame.width, height: 0)
         NSAnimationContext.runAnimationGroup({ ctx in
             ctx.duration = 0.18
