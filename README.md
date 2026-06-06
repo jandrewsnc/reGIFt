@@ -10,7 +10,8 @@ A macOS menu bar GIF picker powered by the [Klipy](https://klipy.com) API. Brows
 - **Trending & search** — opens to trending GIFs on first launch, updates results as you type
 - **Hover preview** — hover any thumbnail to see the full image with a title caption in a panel that slides out below the grid
 - **Drag and drop** — drag a GIF into Slack, Discord, or any app that accepts file drops and it renders as an animated image (not a link)
-- **Right-click menu** — toggle Launch at Login or quit from the menu bar icon
+- **Right-click menu** — toggle Open at Login, update your API key, or quit from the menu bar icon
+- **Auto-start at login** — registers as a Login Item on first launch so it's always ready
 
 </td><td width="37%" valign="top">
 
@@ -33,7 +34,7 @@ Because reGIFt is not distributed through the Mac App Store, macOS will show an 
 macOS remembers this permanently — every subsequent launch (including auto-start at login) opens without any warning.
 
 **API key setup:**
-reGIFt requires a free Klipy API key. On first launch you'll be prompted to enter one:
+reGIFt requires a free Klipy API key. On first open, you'll be asked to enter one when you click the menu bar icon:
 
 <table><tr><td valign="top">
 
@@ -60,7 +61,7 @@ Your key is stored securely in macOS Keychain and never leaves your machine. To 
 | Action                 | Result                                                         |
 | ---------------------- | -------------------------------------------------------------- |
 | **Left-click** icon    | Open / close the GIF picker                                    |
-| **Right-click** icon   | Context menu (Start on login toggle, Update API key, Quit)     |
+| **Right-click** icon   | Context menu (Open at Login toggle, Update API Key, Quit)      |
 | **Type in search bar** | Search Klipy; clear to return to trending                      |
 | **Hover a GIF**        | Preview panel slides out below the grid                        |
 | **Drag a GIF**         | Drop into any app that accepts files — renders as animated GIF |
@@ -79,19 +80,21 @@ For developers who want to build reGIFt themselves.
 **Requirements:** Xcode 15+, a free [Klipy API key](https://partner.klipy.com/api-keys)
 
 1. Clone the repo and set up your API key:
-  ```bash
+   ```bash
    git clone https://github.com/jandrewsnc/reGIFt.git
    cd reGIFt
    cp reGIFt/Config.swift.example reGIFt/Config.swift
    # Edit reGIFt/Config.swift and paste your Klipy API key
-  ```
-2. Open `reGIFt.xcodeproj` in Xcode, drag `reGIFt/Config.swift` into the reGIFt group in the file navigator (check "Add to target: reGIFt"), and set your signing team under Signing & Capabilities.
+   ```
+2. Open `reGIFt.xcodeproj` in Xcode and set your signing team under Signing & Capabilities. (`Config.swift` is already referenced in the project — copying the file in step 1 is all that's needed.)
 3. Build and install:
-  ```bash
+   ```bash
    make install
-  ```
+   ```
 
 Launch the app once after installing — it will register itself as a Login Item automatically. You can toggle this at any time by right-clicking the menu bar icon.
+
+> **Note:** In Debug builds, `Config.swift` is used as a fallback API key so you can run without going through onboarding. Release builds rely on Keychain only — if you build in Release mode and haven't entered a key via the UI, the onboarding screen will appear as expected.
 
 ### Project Structure
 
@@ -102,6 +105,7 @@ reGIFt/
 ├── GIFCellView.swift       — individual cell with drag-and-drop support
 ├── GIFCache.swift          — downloads GIFs to a local temp cache for dragging
 ├── KlipyService.swift      — Klipy API client (trending + search)
+├── KeychainHelper.swift    — macOS Keychain read/write for the user's API key
 ├── Config.swift            — API key (gitignored — create from Config.swift.example)
 ├── Config.swift.example    — template for Config.swift
 └── Assets.xcassets/
@@ -121,4 +125,4 @@ reGIFt uses the [Klipy GIF API](https://klipy.com/docs#overview). The free test 
 cp reGIFt/Config.swift.example reGIFt/Config.swift
 ```
 
-Then open it and replace `YOUR_KLIPY_API_KEY_HERE` with your key from [klipy.com/api-overview](https://klipy.com/api-overview).
+Then open it and replace `YOUR_KLIPY_API_KEY_HERE` with your key from [partner.klipy.com/api-keys](https://partner.klipy.com/api-keys).
