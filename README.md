@@ -1,10 +1,10 @@
 <h1><img src="reGIFt/Assets.xcassets/AppIcon.appiconset/icon_128x128.png" width="48" height="48" align="center" style="margin-right:10px"> reGIFt</h1>
 
-<img align="right" width="320" hspace="20" vspace="20" src="docs/reGIFt_ui.png">
+<table><tr><td valign="top">
 
 A macOS menu bar GIF picker powered by the [Klipy API](https://klipy.com). Browse trending GIFs, search by keyword, and drag any GIF directly into Slack, Discord, or any app that accepts file drops — where it renders as an inline animated image.
 
-## Features
+**Features**
 
 - **Menu bar native** — no Dock icon, stays out of your way
 - **Trending & search** — opens to trending GIFs on first launch, updates results as you type
@@ -14,7 +14,11 @@ A macOS menu bar GIF picker powered by the [Klipy API](https://klipy.com). Brows
 - **Auto-start** — registers itself as a Login Item on first launch from `/Applications/`
 - **Right-click menu** — toggle Launch at Login or quit from the menu bar icon
 
-<br clear="right">
+</td><td width="360" valign="top">
+
+![reGIFt UI](docs/reGIFt_ui.png)
+
+</td></tr></table>
 
 ## Installation
 
@@ -33,7 +37,7 @@ macOS remembers this permanently — every subsequent launch (including auto-sta
 **API key setup:**
 reGIFt requires a free Klipy API key. On first launch you'll be prompted to enter one:
 
-<img align="right" width="320" hspace="20" vspace="10" src="docs/onboarding.png">
+<table><tr><td valign="top">
 
 1. Get a free key at **[klipy.com/api-overview](https://klipy.com/api-overview)**
 2. Click the reGIFt icon in your menu bar
@@ -41,10 +45,13 @@ reGIFt requires a free Klipy API key. On first launch you'll be prompted to ente
 
 Your key is stored securely in macOS Keychain and never leaves your machine. To update your key at any time, right-click the menu bar icon and choose **Update API Key.**
 
-<br clear="right">
+</td><td width="340" valign="top">
+
+![reGIFt onboarding](docs/onboarding.png)
+
+</td></tr></table>
 
 ## Usage
-
 
 | Action                 | Result                                                         |
 | ---------------------- | -------------------------------------------------------------- |
@@ -53,7 +60,6 @@ Your key is stored securely in macOS Keychain and never leaves your machine. To 
 | **Type in search bar** | Search Klipy; clear to return to trending                      |
 | **Hover a GIF**        | Preview panel slides out below the grid                        |
 | **Drag a GIF**         | Drop into any app that accepts files — renders as animated GIF |
-
 
 ## Requirements
 
