@@ -2,7 +2,7 @@
 
 <table><tr><td valign="top">
 
-A macOS menu bar GIF picker powered by the [Klipy API](https://klipy.com). Browse trending GIFs, search by keyword, and drag any GIF directly into Slack, Discord, or any app that accepts file drops — where it renders as an inline animated image.
+A macOS menu bar GIF picker powered by the [Klipy](https://klipy.com) API. Browse trending GIFs, search by keyword, and drag any GIF directly into Slack, Discord, or any app that accepts file drops — where it renders as an inline animated image.
 
 **Features**
 
