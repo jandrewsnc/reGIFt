@@ -10,8 +10,6 @@ A macOS menu bar GIF picker powered by the [Klipy API](https://klipy.com). Brows
 - **Trending & search** — opens to trending GIFs on first launch, updates results as you type
 - **Hover preview** — hover any thumbnail to see the full image with a title caption in a panel that slides out below the grid
 - **Drag and drop** — drag a GIF into Slack, Discord, or any app that accepts file drops and it renders as an animated image (not a link)
-- **Branded UI** — frosted glass window with custom icon and color theme
-- **Auto-start** — registers itself as a Login Item on first launch from `/Applications/`
 - **Right-click menu** — toggle Launch at Login or quit from the menu bar icon
 
 </td><td width="360" valign="top">
