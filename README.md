@@ -54,7 +54,7 @@ Your key is stored securely in macOS Keychain and never leaves your machine. To 
 | Action                 | Result                                                         |
 | ---------------------- | -------------------------------------------------------------- |
 | **Left-click** icon    | Open / close the GIF picker                                    |
-| **Right-click** icon   | Context menu (Login Item toggle, Quit)                         |
+| **Right-click** icon   | Context menu (Start on login toggle, Update API key, Quit)     |
 | **Type in search bar** | Search Klipy; clear to return to trending                      |
 | **Hover a GIF**        | Preview panel slides out below the grid                        |
 | **Drag a GIF**         | Drop into any app that accepts files — renders as animated GIF |
