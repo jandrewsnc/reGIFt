@@ -59,15 +59,24 @@ private struct KlipyResponse: Decodable {
 class KlipyService: ObservableObject {
     static let shared = KlipyService()
 
-    private let apiKey = Config.klipyAPIKey
+    private var apiKey: String {
+        // Production: always read from Keychain (nothing bundled in the binary).
+        // Debug: fall back to Config so the dev workflow still works without onboarding.
+        if let key = KeychainHelper.load() { return key }
+        #if DEBUG
+        return Config.klipyAPIKey
+        #else
+        return ""
+        #endif
+    }
     private let base = "https://api.klipy.com/api/v1"
 
-    func trending(count: Int = 24) async throws -> [KlipyGIF] {
+    func trending(count: Int = 50) async throws -> [KlipyGIF] {
         let url = URL(string: "\(base)/\(apiKey)/gifs/trending?per_page=\(count)")!
         return try await fetch(url)
     }
 
-    func search(query: String, count: Int = 24) async throws -> [KlipyGIF] {
+    func search(query: String, count: Int = 50) async throws -> [KlipyGIF] {
         var components = URLComponents(string: "\(base)/\(apiKey)/gifs/search")!
         components.queryItems = [
             URLQueryItem(name: "q", value: query),

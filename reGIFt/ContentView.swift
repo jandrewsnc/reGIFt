@@ -64,21 +64,40 @@ struct ContentView: View {
 
     @StateObject private var viewModel = GIFViewModel()
     @State private var hoveredGIF: KlipyGIF? = nil
+    @State private var hasKey = KeychainHelper.hasKey
 
-    private let columns = [GridItem(.adaptive(minimum: 110), spacing: 1)]
+    private let columns = Array(repeating: GridItem(.flexible(), spacing: 1), count: 5)
 
     var body: some View {
-        VStack(spacing: 0) {
-            header
-            gifGrid
+        Group {
+            if hasKey {
+                gifPicker
+            } else {
+                OnboardingView {
+                    hasKey = true
+                    viewModel.loadTrending()
+                }
+            }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(
             ZStack {
                 VisualEffectBackground()
                 Color.brandPurple.opacity(0.18)
             }
         )
+        // Re-check on every open in case key was cleared from right-click menu
+        .onAppear { hasKey = KeychainHelper.hasKey }
+        .onReceive(NotificationCenter.default.publisher(for: .reGIFtAPIKeyCleared)) { _ in
+            hasKey = false
+        }
+    }
+
+    private var gifPicker: some View {
+        VStack(spacing: 0) {
+            header
+            gifGrid
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .onChange(of: hoveredGIF?.id) { _ in onHover(hoveredGIF) }
         .onAppear {
             if viewModel.gifs.isEmpty { viewModel.loadTrending() }
@@ -177,6 +196,96 @@ struct ContentView: View {
                 }
                 .padding(.horizontal, 4)
                 .padding(.bottom, 4)
+            }
+        }
+    }
+}
+
+// MARK: - Onboarding view
+
+struct OnboardingView: View {
+    let onComplete: () -> Void
+
+    @State private var apiKey = ""
+    @State private var isValidating = false
+    @State private var errorMessage: String? = nil
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Spacer()
+
+            if let icon = NSImage(named: "AppIcon") {
+                Image(nsImage: icon)
+                    .resizable()
+                    .interpolation(.high)
+                    .frame(width: 72, height: 72)
+            }
+
+            VStack(spacing: 8) {
+                Text("Welcome to reGIFt")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                Text("A free Klipy API key is needed to search and display GIFs.")
+                    .font(.subheadline)
+                    .foregroundColor(.white.opacity(0.7))
+                    .multilineTextAlignment(.center)
+            }
+
+            Link("Get a free key at klipy.com/api-overview →",
+                 destination: URL(string: "https://klipy.com/api-overview")!)
+                .font(.system(size: 12))
+                .foregroundColor(Color(red: 0.6, green: 0.5, blue: 1.0))
+
+            VStack(spacing: 6) {
+                TextField("Paste your API key here", text: $apiKey)
+                    .textFieldStyle(.plain)
+                    .padding(9)
+                    .background(Color.white.opacity(0.1), in: RoundedRectangle(cornerRadius: 8))
+                    .foregroundColor(.white)
+
+                if let error = errorMessage {
+                    Text(error)
+                        .font(.caption)
+                        .foregroundColor(Color(red: 1, green: 0.4, blue: 0.4))
+                }
+            }
+            .padding(.horizontal, 4)
+
+            Button(isValidating ? "Checking…" : "Save Key") {
+                validate()
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(apiKey.trimmingCharacters(in: .whitespaces).isEmpty || isValidating)
+
+            Spacer()
+        }
+        .padding(24)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private func validate() {
+        let key = apiKey.trimmingCharacters(in: .whitespaces)
+        guard !key.isEmpty else { return }
+        isValidating = true
+        errorMessage = nil
+        Task {
+            let url = URL(string: "https://api.klipy.com/api/v1/\(key)/gifs/trending?per_page=1")!
+            do {
+                let (_, response) = try await URLSession.shared.data(from: url)
+                if (response as? HTTPURLResponse)?.statusCode == 200 {
+                    KeychainHelper.save(key)
+                    await MainActor.run { onComplete() }
+                } else {
+                    await MainActor.run {
+                        errorMessage = "Invalid key — please check and try again."
+                        isValidating = false
+                    }
+                }
+            } catch {
+                await MainActor.run {
+                    errorMessage = "Connection failed — check your internet and try again."
+                    isValidating = false
+                }
             }
         }
     }

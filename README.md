@@ -16,6 +16,15 @@ Because reGIFt is not distributed through the Mac App Store, macOS will show an 
 
 macOS remembers this permanently — every subsequent launch (including auto-start at login) opens without any warning.
 
+**API key setup:**
+reGIFt requires a free Klipy API key. On first launch you'll be prompted to enter one:
+
+1. Get a free key at **[klipy.com/api-overview](https://klipy.com/api-overview)**
+2. Click the reGIFt icon in your menu bar
+3. Paste your key into the setup screen and click **Save Key**
+
+Your key is stored securely in macOS Keychain and never leaves your machine. To update your key at any time, right-click the menu bar icon and choose **Update API Key.**
+
 ## Features
 
 - **Menu bar native** — no Dock icon, stays out of your way
@@ -28,13 +37,15 @@ macOS remembers this permanently — every subsequent launch (including auto-sta
 
 ## Usage
 
-| Action | Result |
-|--------|--------|
-| **Left-click** icon | Open / close the GIF picker |
-| **Right-click** icon | Context menu (Login Item toggle, Quit) |
-| **Type in search bar** | Search Klipy; clear to return to trending |
-| **Hover a GIF** | Preview panel slides out below the grid |
-| **Drag a GIF** | Drop into any app that accepts files — renders as animated GIF |
+
+| Action                 | Result                                                         |
+| ---------------------- | -------------------------------------------------------------- |
+| **Left-click** icon    | Open / close the GIF picker                                    |
+| **Right-click** icon   | Context menu (Login Item toggle, Quit)                         |
+| **Type in search bar** | Search Klipy; clear to return to trending                      |
+| **Hover a GIF**        | Preview panel slides out below the grid                        |
+| **Drag a GIF**         | Drop into any app that accepts files — renders as animated GIF |
+
 
 ## Requirements
 
@@ -50,19 +61,17 @@ For developers who want to build reGIFt themselves.
 **Requirements:** Xcode 15+, a free [Klipy API key](https://klipy.com/api-overview)
 
 1. Clone the repo and set up your API key:
-   ```bash
+  ```bash
    git clone https://github.com/jandrewsnc/reGIFt.git
    cd reGIFt
    cp reGIFt/Config.swift.example reGIFt/Config.swift
    # Edit reGIFt/Config.swift and paste your Klipy API key
-   ```
-
+  ```
 2. Open `reGIFt.xcodeproj` in Xcode, drag `reGIFt/Config.swift` into the reGIFt group in the file navigator (check "Add to target: reGIFt"), and set your signing team under Signing & Capabilities.
-
 3. Build and install:
-   ```bash
+  ```bash
    make install
-   ```
+  ```
 
 Launch the app once after installing — it will register itself as a Login Item automatically. You can toggle this at any time by right-clicking the menu bar icon.
 

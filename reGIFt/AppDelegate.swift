@@ -2,6 +2,10 @@ import AppKit
 import SwiftUI
 import ServiceManagement
 
+extension Notification.Name {
+    static let reGIFtAPIKeyCleared = Notification.Name("reGIFtAPIKeyCleared")
+}
+
 class PreviewState: ObservableObject {
     @Published var gif: KlipyGIF?
 }
@@ -12,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
     private var previewPanel: NSPanel?
     let previewState = PreviewState()
 
-    static let popoverSize    = NSSize(width: 480, height: 460)
+    static let popoverSize    = NSSize(width: 530, height: 460)
     static let previewHeight: CGFloat = 280
 
     // Incremented whenever a show or instant-hide occurs.
@@ -75,16 +79,36 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
             menu.addItem(.separator())
         }
 
-        menu.addItem(NSMenuItem(
-            title: "Quit reGIFt",
-            action: #selector(NSApplication.terminate(_:)),
-            keyEquivalent: "q"
-        ))
+        let updateKey = NSMenuItem(title: "Update API Key", action: #selector(resetAPIKey), keyEquivalent: "")
+        updateKey.target = self
+        menu.addItem(updateKey)
+        menu.addItem(.separator())
+
+        let quitItem = NSMenuItem(title: "Quit reGIFt", action: #selector(quitApp), keyEquivalent: "")
+        quitItem.target = self
+        menu.addItem(quitItem)
 
         // Show once then clear so left-click still opens the popover
         statusItem.menu = menu
         statusItem.button?.performClick(nil)
         statusItem.menu = nil
+    }
+
+    @objc private func quitApp() {
+        NSApplication.shared.terminate(nil)
+    }
+
+    @objc private func resetAPIKey() {
+        KeychainHelper.delete()
+        NotificationCenter.default.post(name: .reGIFtAPIKeyCleared, object: nil)
+        dismissPreviewPanel(animated: false)
+        popover.performClose(nil)
+        // Reopen to show onboarding immediately
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { [weak self] in
+            guard let self, let button = self.statusItem.button else { return }
+            self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+            self.popover.contentViewController?.view.window?.makeKey()
+        }
     }
 
     @objc private func toggleLoginItem() {

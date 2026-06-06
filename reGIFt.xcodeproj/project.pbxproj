@@ -14,6 +14,7 @@
 		BBBB000000000000DDDD0005 /* KlipyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB000000000000CCDD0005 /* KlipyService.swift */; };
 		BBBB000000000000DDDD0006 /* GIFCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB000000000000CCDD0006 /* GIFCache.swift */; };
 		BBBB000000000000DDDD0009 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB000000000000CCDD000C /* Config.swift */; };
+		BBBB000000000000DDDD000A /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB000000000000CCDD000D /* KeychainHelper.swift */; };
 		BBBB000000000000DDDD0007 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AABB000000000000CCDD0009 /* Assets.xcassets */; };
 		BBBB000000000000DDDD0008 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABB000000000000CCDD000B /* WebKit.framework */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		AABB000000000000CCDD000A /* reGIFt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reGIFt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABB000000000000CCDD000B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		AABB000000000000CCDD000C /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		AABB000000000000CCDD000D /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				AABB000000000000CCDD0005 /* KlipyService.swift */,
 				AABB000000000000CCDD0006 /* GIFCache.swift */,
 				AABB000000000000CCDD000C /* Config.swift */,
+				AABB000000000000CCDD000D /* KeychainHelper.swift */,
 				AABB000000000000CCDD0009 /* Assets.xcassets */,
 				AABB000000000000CCDD0007 /* Info.plist */,
 				AABB000000000000CCDD0008 /* reGIFt.entitlements */,
@@ -163,6 +166,7 @@
 				BBBB000000000000DDDD0005 /* KlipyService.swift in Sources */,
 				BBBB000000000000DDDD0006 /* GIFCache.swift in Sources */,
 				BBBB000000000000DDDD0009 /* Config.swift in Sources */,
+				BBBB000000000000DDDD000A /* KeychainHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
