@@ -1,6 +1,6 @@
 <h1><img src="reGIFt/Assets.xcassets/AppIcon.appiconset/icon_128x128.png" width="48" height="48" align="center" style="margin-right:10px"> reGIFt</h1>
 
-<table><tr><td valign="top">
+<table><tr><td width="63%" valign="top">
 
 A macOS menu bar GIF picker powered by the [Klipy](https://klipy.com) API. Browse trending GIFs, search by keyword, and drag any GIF directly into Slack, Discord, or any app that accepts file drops — where it renders as an inline animated image.
 
@@ -12,7 +12,7 @@ A macOS menu bar GIF picker powered by the [Klipy](https://klipy.com) API. Brows
 - **Drag and drop** — drag a GIF into Slack, Discord, or any app that accepts file drops and it renders as an animated image (not a link)
 - **Right-click menu** — toggle Launch at Login or quit from the menu bar icon
 
-</td><td width="360" valign="top">
+</td><td width="37%" valign="top">
 
 ![reGIFt UI](docs/reGIFt_ui.png)
 
