@@ -45,7 +45,7 @@ reGIFt requires a free Klipy API key. On first launch you'll be prompted to ente
 
 Your key is stored securely in macOS Keychain and never leaves your machine. To update your key at any time, right-click the menu bar icon and choose **Update API Key.**
 
-</td><td width="340" valign="top">
+</td><td width="50%" valign="top">
 
 ![reGIFt onboarding](docs/onboarding.png)
 
