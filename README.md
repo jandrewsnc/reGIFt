@@ -37,7 +37,7 @@ reGIFt requires a free Klipy API key. On first launch you'll be prompted to ente
 
 <table><tr><td valign="top">
 
-1. Get a free key at **[klipy.com/api-overview](https://klipy.com/api-overview)**
+1. Get a free key at **[partner.klipy.com/api-keys](https://partner.klipy.com/api-keys)**
 2. Click the reGIFt icon in your menu bar
 3. Paste your key into the setup screen and click **Save Key**
 
@@ -70,7 +70,7 @@ Your key is stored securely in macOS Keychain and never leaves your machine. To 
 
 For developers who want to build reGIFt themselves.
 
-**Requirements:** Xcode 15+, a free [Klipy API key](https://klipy.com/api-overview)
+**Requirements:** Xcode 15+, a free [Klipy API key](https://partner.klipy.com/api-keys)
 
 1. Clone the repo and set up your API key:
   ```bash
@@ -105,7 +105,7 @@ reGIFt/
 
 ### API Usage
 
-reGIFt uses the [Klipy GIF API](https://klipy.com/api-overview). The free test key allows **100 requests/hour** — one call on first open, one per search query. Results are cached in memory between opens so repeated views don't trigger additional requests.
+reGIFt uses the [Klipy GIF API](https://klipy.com/docs#overview). The free test key allows **100 requests/hour** — one call on first open, one per search query. Results are cached in memory between opens so repeated views don't trigger additional requests.
 
 ### Secrets
 
