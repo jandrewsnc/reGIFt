@@ -1,6 +1,6 @@
 <h1><img src="reGIFt/Assets.xcassets/AppIcon.appiconset/icon_128x128.png" width="48" height="48" align="center" style="margin-right:10px"> reGIFt</h1>
 
-<img align="right" width="320" src="docs/reGIFt_ui.png">
+<img align="right" width="320" hspace="20" vspace="10" src="docs/reGIFt_ui.png">
 
 A macOS menu bar GIF picker powered by the [Klipy API](https://klipy.com). Browse trending GIFs, search by keyword, and drag any GIF directly into Slack, Discord, or any app that accepts file drops — where it renders as an inline animated image.
 
@@ -33,7 +33,7 @@ macOS remembers this permanently — every subsequent launch (including auto-sta
 **API key setup:**
 reGIFt requires a free Klipy API key. On first launch you'll be prompted to enter one:
 
-<img align="right" width="280" src="docs/onboarding.png">
+<img align="right" width="320" hspace="20" vspace="10" src="docs/onboarding.png">
 
 1. Get a free key at **[klipy.com/api-overview](https://klipy.com/api-overview)**
 2. Click the reGIFt icon in your menu bar
