@@ -231,8 +231,8 @@ struct OnboardingView: View {
                     .multilineTextAlignment(.center)
             }
 
-            Link("Get a free key at klipy.com/api-overview →",
-                 destination: URL(string: "https://klipy.com/api-overview")!)
+            Link("Get a free key at partner.klipy.com/api-keys →",
+                 destination: URL(string: "https://partner.klipy.com/api-keys")!)
                 .font(.system(size: 12))
                 .foregroundColor(Color(red: 0.6, green: 0.5, blue: 1.0))
 

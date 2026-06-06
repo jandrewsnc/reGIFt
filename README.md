@@ -37,9 +37,15 @@ reGIFt requires a free Klipy API key. On first launch you'll be prompted to ente
 
 <table><tr><td valign="top">
 
-1. Get a free key at **[partner.klipy.com/api-keys](https://partner.klipy.com/api-keys)**
-2. Click the reGIFt icon in your menu bar
-3. Paste your key into the setup screen and click **Save Key**
+1. Go to **[partner.klipy.com/api-keys](https://partner.klipy.com/api-keys)** and click **Add Platform**, then fill in the form:
+   - **Platform name:** `reGIFt`
+   - **Your email:** your email address
+   - **Platform website:** leave blank
+   - **Tell us about your platform:** paste this in:
+     > Personal macOS menu bar app for browsing and drag-dropping GIFs into Slack and Discord. For personal use only.
+   - Check the box to agree to the terms, then click **Add Platform**
+2. Copy the API key that appears
+3. Click the reGIFt icon in your menu bar, paste your key into the setup screen, and click **Save Key**
 
 Your key is stored securely in macOS Keychain and never leaves your machine. To update your key at any time, right-click the menu bar icon and choose **Update API Key.**
 
