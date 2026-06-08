@@ -3,7 +3,7 @@
 A macOS menu bar GIF picker powered by the [Klipy](https://klipy.com) API. Browse trending GIFs, search by keyword, and drag any GIF directly into Slack, Discord, or any app that accepts file drops — where it renders as an inline animated image.
 
 <p align="center">
-  <img src="docs/reGIFt_ui.png" width="50%">
+  <img src="docs/reGIFt_ui.png" width="425">
 </p>
 
 **Features**
@@ -45,7 +45,7 @@ reGIFt requires a free Klipy API key. On first open, you'll be asked to enter on
 Your key is stored securely in macOS Keychain and never leaves your machine. To update your key at any time, right-click the menu bar icon and choose **Update API Key.**
 
 <p align="center">
-  <img src="docs/onboarding.png" width="50%">
+  <img src="docs/onboarding.png" width="425">
 </p>
 
 ## Usage
