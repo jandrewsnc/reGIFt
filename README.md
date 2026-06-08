@@ -4,6 +4,10 @@
 
 A macOS menu bar GIF picker powered by the [Klipy](https://klipy.com) API. Browse trending GIFs, search by keyword, and drag any GIF directly into Slack, Discord, or any app that accepts file drops — where it renders as an inline animated image.
 
+<p align="center">
+  <img src="docs/reGIFt_ui.png" width="50%">
+</p>
+
 **Features**
 
 - **Menu bar native** — no Dock icon, stays out of your way
@@ -12,12 +16,6 @@ A macOS menu bar GIF picker powered by the [Klipy](https://klipy.com) API. Brows
 - **Drag and drop** — drag a GIF into Slack, Discord, or any app that accepts file drops and it renders as an animated image (not a link)
 - **Right-click menu** — toggle Open at Login, update your API key, or quit from the menu bar icon
 - **Auto-start at login** — registers as a Login Item on first launch so it's always ready
-
-</td><td width="37%" valign="top">
-
-![reGIFt UI](docs/reGIFt_ui.png)
-
-</td></tr></table>
 
 ## Installation
 
@@ -36,8 +34,6 @@ macOS remembers this permanently, so every subsequent launch opens without any w
 **API key setup:**
 reGIFt requires a free Klipy API key. On first open, you'll be asked to enter one when you click the menu bar icon:
 
-<table><tr><td valign="top">
-
 1. Go to **[partner.klipy.com/api-keys](https://partner.klipy.com/api-keys)** and click **Add Platform**, then fill in the form:
    - **Platform name:** `reGIFt`
    - **Your email:** your email address
@@ -50,11 +46,9 @@ reGIFt requires a free Klipy API key. On first open, you'll be asked to enter on
 
 Your key is stored securely in macOS Keychain and never leaves your machine. To update your key at any time, right-click the menu bar icon and choose **Update API Key.**
 
-</td><td width="50%" valign="top">
-
-![reGIFt onboarding](docs/onboarding.png)
-
-</td></tr></table>
+<p align="center">
+  <img src="docs/onboarding.png" width="50%">
+</p>
 
 ## Usage
 
