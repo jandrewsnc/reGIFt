@@ -1,7 +1,5 @@
 <h1><img src="reGIFt/Assets.xcassets/AppIcon.appiconset/icon_128x128.png" width="48" height="48" align="center" style="margin-right:10px"> reGIFt</h1>
 
-<table><tr><td width="63%" valign="top">
-
 A macOS menu bar GIF picker powered by the [Klipy](https://klipy.com) API. Browse trending GIFs, search by keyword, and drag any GIF directly into Slack, Discord, or any app that accepts file drops — where it renders as an inline animated image.
 
 <p align="center">
