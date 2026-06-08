@@ -31,7 +31,7 @@ Because reGIFt is not distributed through the Mac App Store, macOS will show an 
 2. **Right-click** `reGIFt.app` → **Open**
 3. Click **Open** in the dialog
 
-macOS remembers this permanently — every subsequent launch (including auto-start at login) opens without any warning.
+macOS remembers this permanently, so every subsequent launch opens without any warning.
 
 **API key setup:**
 reGIFt requires a free Klipy API key. On first open, you'll be asked to enter one when you click the menu bar icon:
