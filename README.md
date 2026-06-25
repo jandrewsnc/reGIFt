@@ -12,7 +12,9 @@ A macOS menu bar GIF picker powered by the [Klipy](https://klipy.com) API. Brows
 - **Trending & search** — opens to trending GIFs on first launch, updates results as you type
 - **Hover preview** — hover any thumbnail to see the full image with a title caption in a panel that slides out below the grid
 - **Drag and drop** — drag a GIF into Slack, Discord, or any app that accepts file drops and it renders as an animated image (not a link)
-- **Right-click menu** — toggle Open at Login, update your API key, or quit from the menu bar icon
+- **Global shortcut** — bind any key combo to open/close the picker from any app (right-click → Set Shortcut…)
+- **Right-click GIF** — View on Klipy or Copy Image URL from any GIF in the grid
+- **Right-click menu** — toggle Open at Login, update your API key, set a shortcut, or quit from the menu bar icon
 - **Auto-start at login** — registers as a Login Item on first launch so it's always ready
 
 ## Installation
@@ -77,6 +79,7 @@ Your key is stored securely in macOS Keychain and never leaves your machine. To 
 | **Right-click** icon   | Context menu (Open at Login toggle, Update API Key, Set Shortcut…, Quit) |
 | **Type in search bar** | Search Klipy; clear to return to trending                      |
 | **Hover a GIF**        | Preview panel slides out below the grid                        |
+| **Right-click a GIF**  | View on Klipy or Copy Image URL                                |
 | **Drag a GIF**         | Drop into any app that accepts files — renders as animated GIF |
 
 ## Requirements
