@@ -73,7 +73,8 @@ Your key is stored securely in macOS Keychain and never leaves your machine. To 
 | Action                 | Result                                                         |
 | ---------------------- | -------------------------------------------------------------- |
 | **Left-click** icon    | Open / close the GIF picker                                    |
-| **Right-click** icon   | Context menu (Open at Login toggle, Update API Key, Quit)      |
+| **Global shortcut**    | Open / close from any app (set via right-click → Set Shortcut…) |
+| **Right-click** icon   | Context menu (Open at Login toggle, Update API Key, Set Shortcut…, Quit) |
 | **Type in search bar** | Search Klipy; clear to return to trending                      |
 | **Hover a GIF**        | Preview panel slides out below the grid                        |
 | **Drag a GIF**         | Drop into any app that accepts files — renders as animated GIF |
@@ -117,6 +118,7 @@ reGIFt/
 ├── GIFCellView.swift       — individual cell with drag-and-drop support
 ├── GIFCache.swift          — downloads GIFs to a local temp cache for dragging
 ├── KlipyService.swift      — Klipy API client (trending + search)
+├── ShortcutConfigView.swift — global hotkey capture UI (key-combo picker)
 ├── KeychainHelper.swift    — macOS Keychain read/write for the user's API key
 ├── Config.swift            — API key (gitignored — create from Config.swift.example)
 ├── Config.swift.example    — template for Config.swift

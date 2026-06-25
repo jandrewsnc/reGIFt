@@ -15,8 +15,10 @@
 		BBBB000000000000DDDD0006 /* GIFCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB000000000000CCDD0006 /* GIFCache.swift */; };
 		BBBB000000000000DDDD0009 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB000000000000CCDD000C /* Config.swift */; };
 		BBBB000000000000DDDD000A /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB000000000000CCDD000D /* KeychainHelper.swift */; };
+		BBBB000000000000DDDD000B /* ShortcutConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB000000000000CCDD000E /* ShortcutConfigView.swift */; };
 		BBBB000000000000DDDD0007 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AABB000000000000CCDD0009 /* Assets.xcassets */; };
 		BBBB000000000000DDDD0008 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABB000000000000CCDD000B /* WebKit.framework */; };
+		BBBB000000000000DDDD000C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABB000000000000CCDD000F /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +33,10 @@
 		AABB000000000000CCDD0009 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AABB000000000000CCDD000A /* reGIFt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reGIFt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABB000000000000CCDD000B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		AABB000000000000CCDD000F /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		AABB000000000000CCDD000C /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		AABB000000000000CCDD000D /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		AABB000000000000CCDD000E /* ShortcutConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutConfigView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBBB000000000000DDDD0008 /* WebKit.framework in Frameworks */,
+				BBBB000000000000DDDD000C /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +72,7 @@
 				AABB000000000000CCDD0006 /* GIFCache.swift */,
 				AABB000000000000CCDD000C /* Config.swift */,
 				AABB000000000000CCDD000D /* KeychainHelper.swift */,
+				AABB000000000000CCDD000E /* ShortcutConfigView.swift */,
 				AABB000000000000CCDD0009 /* Assets.xcassets */,
 				AABB000000000000CCDD0007 /* Info.plist */,
 				AABB000000000000CCDD0008 /* reGIFt.entitlements */,
@@ -86,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				AABB000000000000CCDD000B /* WebKit.framework */,
+				AABB000000000000CCDD000F /* Carbon.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -167,6 +174,7 @@
 				BBBB000000000000DDDD0006 /* GIFCache.swift in Sources */,
 				BBBB000000000000DDDD0009 /* Config.swift in Sources */,
 				BBBB000000000000DDDD000A /* KeychainHelper.swift in Sources */,
+				BBBB000000000000DDDD000B /* ShortcutConfigView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
