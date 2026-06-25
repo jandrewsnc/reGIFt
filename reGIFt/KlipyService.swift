@@ -70,6 +70,12 @@ class KlipyService: ObservableObject {
         #endif
     }
     private let base = "https://api.klipy.com/api/v1"
+    private let session: URLSession = {
+        let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = 10
+        config.timeoutIntervalForResource = 30
+        return URLSession(configuration: config)
+    }()
 
     func trending(count: Int = 50) async throws -> [KlipyGIF] {
         let url = URL(string: "\(base)/\(apiKey)/gifs/trending?per_page=\(count)")!
@@ -77,6 +83,12 @@ class KlipyService: ObservableObject {
     }
 
     func search(query: String, count: Int = 50) async throws -> [KlipyGIF] {
+        #if DEBUG
+        if simulateTimeout {
+            try await Task.sleep(nanoseconds: 5_000_000_000)
+            throw URLError(.timedOut)
+        }
+        #endif
         var components = URLComponents(string: "\(base)/\(apiKey)/gifs/search")!
         components.queryItems = [
             URLQueryItem(name: "q", value: query),
@@ -85,8 +97,12 @@ class KlipyService: ObservableObject {
         return try await fetch(components.url!)
     }
 
+    #if DEBUG
+    var simulateTimeout = false
+    #endif
+
     private func fetch(_ url: URL) async throws -> [KlipyGIF] {
-        let (data, response) = try await URLSession.shared.data(from: url)
+        let (data, response) = try await session.data(from: url)
         guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
             // Print raw response to help debug field names on first run
             if let body = String(data: data, encoding: .utf8) {

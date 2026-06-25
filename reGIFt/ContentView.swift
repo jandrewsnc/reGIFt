@@ -17,6 +17,9 @@ class GIFViewModel: ObservableObject {
         errorMessage = nil
         Task {
             do { gifs = try await KlipyService.shared.trending() }
+            catch let e as URLError where e.code == .timedOut {
+                errorMessage = "Request timed out — Klipy may be slow. Try again."
+            }
             catch { errorMessage = "Couldn't load GIFs. Check your API key." }
             isLoading = false
         }
@@ -30,7 +33,11 @@ class GIFViewModel: ObservableObject {
             guard !Task.isCancelled else { return }
             isLoading = true
             errorMessage = nil
+            gifs = []
             do { gifs = try await KlipyService.shared.search(query: query) }
+            catch let e as URLError where e.code == .timedOut {
+                if !Task.isCancelled { errorMessage = "Request timed out — Klipy may be slow. Try again." }
+            }
             catch { if !Task.isCancelled { errorMessage = "Search failed." } }
             isLoading = false
         }

@@ -5,6 +5,12 @@ actor GIFCache {
 
     private let cacheDir: URL
     private var inProgress: [String: Task<URL, Error>] = [:]
+    private let session: URLSession = {
+        let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = 15
+        config.timeoutIntervalForResource = 60
+        return URLSession(configuration: config)
+    }()
 
     private init() {
         cacheDir = URL(fileURLWithPath: NSTemporaryDirectory())
@@ -21,7 +27,7 @@ actor GIFCache {
             return try await existing.value
         }
         let task = Task<URL, Error> {
-            let (data, _) = try await URLSession.shared.data(from: sourceURL)
+            let (data, _) = try await self.session.data(from: sourceURL)
             try data.write(to: dest, options: .atomic)
             return dest
         }
