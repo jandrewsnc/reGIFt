@@ -9,6 +9,7 @@ struct KlipyGIF: Identifiable {
     let thumbURL: URL?
     let thumbAspectRatio: CGFloat  // width/height of the sm gif
     let gifURL: URL?
+    let klipyPageURL: URL?
 }
 
 extension KlipyGIF: Decodable {
@@ -26,7 +27,7 @@ extension KlipyGIF: Decodable {
         let sm: Size?
     }
 
-    enum CodingKeys: String, CodingKey { case id, title, file }
+    enum CodingKeys: String, CodingKey { case id, title, file, slug }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -42,6 +43,16 @@ extension KlipyGIF: Decodable {
         } else {
             thumbAspectRatio = 16.0 / 9.0
         }
+        // Use API-provided slug if present, otherwise derive from title
+        let slug = (try? c.decode(String.self, forKey: .slug)) ?? Self.slugify(title)
+        klipyPageURL = slug.isEmpty ? nil : URL(string: "https://klipy.com/gifs/\(slug)")
+    }
+
+    private static func slugify(_ string: String) -> String {
+        string.lowercased()
+            .components(separatedBy: CharacterSet.alphanumerics.inverted)
+            .filter { !$0.isEmpty }
+            .joined(separator: "-")
     }
 }
 

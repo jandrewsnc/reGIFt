@@ -54,7 +54,7 @@ struct DraggableGIFContainer: NSViewRepresentable {
 // MARK: - AppKit view with WebView display + drag overlay
 
 class DraggableGIFNSView: NSView {
-    var gif: KlipyGIF?
+    var gif: KlipyGIF? { didSet { dragOverlay.gif = gif } }
     private var webView: WKWebView!
     private var dragOverlay: DragOverlayView!
 
@@ -150,13 +150,39 @@ struct GIFWebView: NSViewRepresentable {
     }
 }
 
-// MARK: - Transparent overlay that intercepts drag events
+// MARK: - Transparent overlay that intercepts drag events and owns the context menu
 
 class DragOverlayView: NSView {
+    var gif: KlipyGIF?
     var onMouseDragged: ((NSEvent) -> Void)?
 
     override var isOpaque: Bool { false }
     override func draw(_ dirtyRect: NSRect) {}
+
+    override func menu(for event: NSEvent) -> NSMenu? {
+        guard let gif else { return nil }
+        let menu = NSMenu()
+        if gif.klipyPageURL != nil {
+            let open = NSMenuItem(title: "View on Klipy", action: #selector(openOnKlipy), keyEquivalent: "")
+            open.target = self
+            menu.addItem(open)
+            let copy = NSMenuItem(title: "Copy Image URL", action: #selector(copyImageURL), keyEquivalent: "")
+            copy.target = self
+            menu.addItem(copy)
+        }
+        return menu.items.isEmpty ? nil : menu
+    }
+
+    @objc private func openOnKlipy() {
+        guard let url = gif?.klipyPageURL else { return }
+        NSWorkspace.shared.open(url)
+    }
+
+    @objc private func copyImageURL() {
+        guard let url = gif?.gifURL else { return }
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(url.absoluteString, forType: .string)
+    }
 
     // Accept mouseDown so we receive the subsequent mouseDragged
     override func mouseDown(with event: NSEvent) {}
