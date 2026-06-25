@@ -21,11 +21,16 @@ A macOS menu bar GIF picker powered by the [Klipy](https://klipy.com) API. Brows
 2. Unzip and drag **reGIFt.app** to your `/Applications/` folder
 
 **First launch — one-time Gatekeeper step:**
-Because reGIFt is not distributed through the Mac App Store, macOS will show an "unidentified developer" warning the first time. To get past it:
+Because reGIFt is not distributed through the Mac App Store, macOS will block it on first launch. To get past it:
 
-1. In Finder, go to `/Applications/`
-2. **Right-click** `reGIFt.app` → **Open**
-3. Click **Open** in the dialog
+1. Double-click `reGIFt.app` — macOS will show a blocked warning. Dismiss it.
+2. Open **System Settings** → **Privacy & Security**
+3. Scroll to the **Security** section — you'll see `"reGIFt.app" was blocked to protect your Mac.`
+4. Click **Open Anyway**, then enter your login password if prompted
+
+<p align="center">
+  <img src="docs/gatekeeper.png" width="500">
+</p>
 
 macOS remembers this permanently, so every subsequent launch opens without any warning.
 
